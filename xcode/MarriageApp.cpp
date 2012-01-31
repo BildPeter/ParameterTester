@@ -8,6 +8,7 @@
 #include "cinder/Utilities.h"
 #include "cinder/params/Params.h"
 
+
 #include <netevo.h>
 //#include <boost/numeric/odeint/stepper/runge_kutta4.hpp>
 
@@ -24,9 +25,6 @@ using namespace std;
  AIM:
  
  TODO:
- - Start, Stop Simulation 
- -> Toggle_Sim()
- - Restart Simulation
  - Stepsize should be variable 
         -> Do_Step implementation
  - Include ODEint with Do_Step() instead of Netevo
@@ -89,6 +87,9 @@ class MarriageApp : public AppBasic {
 	void setup();
 	void update();
 	void draw();
+    void toggleSim();
+    void keyDown( KeyEvent event );
+    void setInitialSIR( State &stateVec, double inS, double inI, double inR );
     
     System              sirSys;
     sirDynamics         sirDyn;
@@ -99,7 +100,11 @@ class MarriageApp : public AppBasic {
 //        dynState = State( sirSys.totalStates() );
     
     int     steps       = 1;
-    double  stepSize    = 0.0001;
+    float  stepSize    = 0.0001;
+    bool    runSim      = false;
+    float  initS       = 300.0;
+    float  initI       = 1.0;
+    float  initR       = 0.0;
     
     SimulateOdeFixed sirSimulator = SimulateOdeFixed(RK_4, stepSize );
     
@@ -119,30 +124,29 @@ void MarriageApp::setup()
     
     // ----- Anfangsbedingungen festlegen -----
     dynState = State( sirSys.totalStates() );
-    dynState[ 0 ] = 300;
-    dynState[ 1 ] = 1.0 ; // Zufällig den zweiten Wert (I) infizieren   
-    dynState[ 2 ] = 0;
+    setInitialSIR( dynState, initS, initI, initR );
     
     // -----------------------------------------------
     // ----- Parameter Interface -----
     mParams = params::InterfaceGl( "Parameters", Vec2i( 200, 400 ) );
-	mParams.addParam( "Background Color", &backgroundColor );
-    mParams.addParam( "Steps per output", &steps );
-//    mParams.addParam( "StepSize", &stepSize );
-
+    mParams.addParam( "Steps Size",         &stepSize,  "min=0.0001 step=0.0001 precision=4" );
+    mParams.addParam( "Steps per output",   &steps,     "min=0.0 step=1" );
+    mParams.addParam( "Initial S", &initS, "min=0.0");
+    mParams.addParam( "Initial I", &initI, "min=0.0");
+    mParams.addParam( "Initial R", &initR, "min=0.0");
+    
 }
-
 
 
 void MarriageApp::update()
 {
-    
+    if (runSim) {
 //    SimObserverToStream coutObs( std::cout );
 //    sirSimulator.simulate( sirSys, 0.01,  dynState,  coutObs,  nullLog );
     sirSimulator.simulate(    sirSys, steps * stepSize, dynState, nullObserver, nullLog );
     SOE.push_back( dynState[ 1 ] );
 //    cout << "Nr: " << getElapsedFrames() << "\tSizeOfEpidemic: " << SOE.back() << endl;
-
+    }
 }
 
 
@@ -157,6 +161,38 @@ void MarriageApp::draw()
     
     params::InterfaceGl::draw();
     }
+
+
+void MarriageApp::keyDown( KeyEvent event )
+{
+    switch ( event.getChar() ) {
+        case ' ':
+            toggleSim();
+            break;
+        case 'r':
+            SOE.clear();
+            setInitialSIR( dynState, initS, initI, initR );
+            break;
+        default:
+            break;
+    }
+}
+
+void MarriageApp::toggleSim()
+{
+    if (runSim){
+        runSim = false;
+    }
+    else
+        runSim = true;
+}
+
+void MarriageApp::setInitialSIR( State &stateVec, double inS, double inI, double inR )
+{
+    stateVec[ 0 ] = inS;
+    stateVec[ 1 ] = inI;
+    stateVec[ 2 ] = inR;
+}
 
 
 CINDER_APP_BASIC( MarriageApp, RendererGl )
