@@ -10,7 +10,7 @@
 
 
 #include <netevo.h>
-//#include <boost/numeric/odeint/stepper/runge_kutta4.hpp>
+#include <boost/numeric/odeint/stepper/runge_kutta4.hpp>
 
 //#include "peter/PeterDynamics.h"
 
@@ -28,34 +28,37 @@ using namespace std;
  - Stepsize should be variable 
         -> Do_Step implementation
  - Include ODEint with Do_Step() instead of Netevo
- - Rescale the Axis
+ - Rescale the axis
+ - Difference plot
+        -> New plot
+        -> additional precision
  
  -------------------------------------------------------------------------------------------------------- */
  
 
 void initDegreeDistributed( System &sys, State &initial, int states, double degreeFactor );
 
-//class SimulateOdeStep   : public SimulateOdeFixed{
-//    public  :
-//    SimulateOdeStep( double StepSize );   // Konstruktor
-//    void simulateStep(System &sys, double time, State &inital );
-//    
-//    private :
-//    odeint::runge_kutta4< State > mRk4Stepper;
-//    double mStepSize;
-//};
-//
-//SimulateOdeStep::SimulateOdeStep( double StepSize ) : SimulateOdeFixed( RK_4, StepSize ){
-//    mStepSize = StepSize;
-//}
-//
-//void SimulateOdeStep::simulateStep(System &sys, double time, State &inital ){
-//    
-//    if (!sys.validStateIDs()) { sys.refreshStateIDs(); }
-//    
-//    mRk4Stepper.do_step( Simulator(&sys), inital,  time, mStepSize ); 
-//    
-//}
+class SimulateOdeStep   : public SimulateOdeFixed{
+    public  :
+    SimulateOdeStep( double StepSize );   // Konstruktor
+    void simulateStep(System &sys, double time, State &inital );
+    
+    private :
+    odeint::runge_kutta4< State > mRk4Stepper;
+    double mStepSize;
+};
+
+SimulateOdeStep::SimulateOdeStep( double StepSize ) : SimulateOdeFixed( RK_4, StepSize ){
+    mStepSize = StepSize;
+}
+
+void SimulateOdeStep::simulateStep(System &sys, double time, State &inital ){
+    
+    if (!sys.validStateIDs()) { sys.refreshStateIDs(); }
+    
+    mRk4Stepper.do_step( Simulator(&sys), inital,  time, mStepSize ); 
+    
+}
 
 
 
@@ -128,7 +131,7 @@ void MarriageApp::setup()
     
     // -----------------------------------------------
     // ----- Parameter Interface -----
-    mParams = params::InterfaceGl( "Parameters", Vec2i( 200, 400 ) );
+    mParams = params::InterfaceGl( "Parameters", Vec2i( 200, 200 ) );
     mParams.addParam( "Steps Size",         &stepSize,  "min=0.0001 step=0.0001 precision=4" );
     mParams.addParam( "Steps per output",   &steps,     "min=0.0 step=1" );
     mParams.addParam( "Initial S", &initS, "min=0.0");
@@ -225,8 +228,8 @@ void drawPlot( vector< double > &inputVec ){
     gl::translate( Vec2f( 50, 650 ) );
     gl::rotate( Vec3f( 180, 0, 0) );
     
-    gl::drawVector( Vec3f( 0, 0, 0 ) , Vec3f( 1200, 0, 0 ),  headLength , headRadius );     // x-Axis
-    gl::drawVector( Vec3f( 0, 0, 0 ) , Vec3f( 0, 600, 0 ), headLength , headRadius );     // Y-Axis
+    gl::drawVector( Vec3f( 0, 0, 0 ) , Vec3f( 1200, 0, 0 ),  headLength , headRadius );     // X-Axis
+    gl::drawVector( Vec3f( 0, 0, 0 ) , Vec3f( 0, 300, 0 ), headLength , headRadius );       // Y-Axis
     
     glLineWidth( 2 );
     gl::color( Color( 1, 0, 0 ) );

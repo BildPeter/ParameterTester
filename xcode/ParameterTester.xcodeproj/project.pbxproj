@@ -23,7 +23,7 @@
 		DB5ED25214D6A1E900637408 /* gml.cc in Sources */ = {isa = PBXBuildFile; fileRef = DB5ED24814D6A1E900637408 /* gml.cc */; };
 		DB5ED25314D6A1E900637408 /* simulate.cc in Sources */ = {isa = PBXBuildFile; fileRef = DB5ED24B14D6A1E900637408 /* simulate.cc */; };
 		DB5ED25414D6A1E900637408 /* system.cc in Sources */ = {isa = PBXBuildFile; fileRef = DB5ED24D14D6A1E900637408 /* system.cc */; };
-		DB5ED25614D6A1F700637408 /* MarriageApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB5ED25514D6A1F700637408 /* MarriageApp.cpp */; };
+		DB923C1B14D7F553000DEBC4 /* ODEintExample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB923C1A14D7F553000DEBC4 /* ODEintExample.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +58,7 @@
 		DB5ED24E14D6A1E900637408 /* system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = system.h; sourceTree = "<group>"; };
 		DB5ED24F14D6A1E900637408 /* visualise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = visualise.h; sourceTree = "<group>"; };
 		DB5ED25514D6A1F700637408 /* MarriageApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MarriageApp.cpp; sourceTree = "<group>"; };
+		DB923C1A14D7F553000DEBC4 /* ODEintExample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ODEintExample.cpp; path = ../src/ODEintExample.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +87,7 @@
 			children = (
 				DB5ED25514D6A1F700637408 /* MarriageApp.cpp */,
 				00BAE6590E7ED9C10018A608 /* ParameterTesterApp.cpp */,
+				DB923C1A14D7F553000DEBC4 /* ODEintExample.cpp */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -246,7 +248,7 @@
 				DB5ED25214D6A1E900637408 /* gml.cc in Sources */,
 				DB5ED25314D6A1E900637408 /* simulate.cc in Sources */,
 				DB5ED25414D6A1E900637408 /* system.cc in Sources */,
-				DB5ED25614D6A1F700637408 /* MarriageApp.cpp in Sources */,
+				DB923C1B14D7F553000DEBC4 /* ODEintExample.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
