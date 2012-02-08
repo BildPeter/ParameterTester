@@ -14,7 +14,7 @@
 //#include "peter/PeterDynamics.h"
 
 using namespace netevo;
-using namespace boost::numeric;
+//using namespace boost::numeric;
 
 using namespace ci;
 using namespace ci::app;
