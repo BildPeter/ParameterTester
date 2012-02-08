@@ -8,10 +8,9 @@
 #include "cinder/Utilities.h"
 #include "cinder/params/Params.h"
 
+#include <netevo/netevo.h>
 
-#include <netevo.h>
-#include <boost/numeric/odeint/stepper/runge_kutta4.hpp>
-
+//#include <numeric/odeint/stepper/runge_kutta4.hpp>
 //#include "peter/PeterDynamics.h"
 
 using namespace netevo;
@@ -38,27 +37,27 @@ using namespace std;
 
 void initDegreeDistributed( System &sys, State &initial, int states, double degreeFactor );
 
-class SimulateOdeStep   : public SimulateOdeFixed{
-    public  :
-    SimulateOdeStep( double StepSize );   // Konstruktor
-    void simulateStep(System &sys, double time, State &inital );
-    
-    private :
-    odeint::runge_kutta4< State > mRk4Stepper;
-    double mStepSize;
-};
-
-SimulateOdeStep::SimulateOdeStep( double StepSize ) : SimulateOdeFixed( RK_4, StepSize ){
-    mStepSize = StepSize;
-}
-
-void SimulateOdeStep::simulateStep(System &sys, double time, State &inital ){
-    
-    if (!sys.validStateIDs()) { sys.refreshStateIDs(); }
-    
-    mRk4Stepper.do_step( Simulator(&sys), inital,  time, mStepSize ); 
-    
-}
+//class SimulateOdeStep   : public SimulateOdeFixed{
+//    public  :
+//    SimulateOdeStep( double StepSize );   // Konstruktor
+//    void simulateStep(System &sys, double time, State &inital );
+//    
+//    private :
+//    odeint::runge_kutta4< State > mRk4Stepper;
+//    double mStepSize;
+//};
+//
+//SimulateOdeStep::SimulateOdeStep( double StepSize ) : SimulateOdeFixed( RK_4, StepSize ){
+//    mStepSize = StepSize;
+//}
+//
+//void SimulateOdeStep::simulateStep(System &sys, double time, State &inital ){
+//    
+//    if (!sys.validStateIDs()) { sys.refreshStateIDs(); }
+//    
+//    mRk4Stepper.do_step( Simulator(&sys), inital,  time, mStepSize ); 
+//    
+//}
 
 
 

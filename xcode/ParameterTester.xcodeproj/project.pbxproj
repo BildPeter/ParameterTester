@@ -18,12 +18,7 @@
 		5323E6B60EAFCA7E003A9687 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B50EAFCA7E003A9687 /* QTKit.framework */; };
 		53E3CDFC0E86099300238D2B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53E3CDFB0E86099300238D2B /* Carbon.framework */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		DB5ED25014D6A1E900637408 /* evolve.cc in Sources */ = {isa = PBXBuildFile; fileRef = DB5ED24414D6A1E900637408 /* evolve.cc */; };
-		DB5ED25114D6A1E900637408 /* evolve_sa.cc in Sources */ = {isa = PBXBuildFile; fileRef = DB5ED24614D6A1E900637408 /* evolve_sa.cc */; };
-		DB5ED25214D6A1E900637408 /* gml.cc in Sources */ = {isa = PBXBuildFile; fileRef = DB5ED24814D6A1E900637408 /* gml.cc */; };
-		DB5ED25314D6A1E900637408 /* simulate.cc in Sources */ = {isa = PBXBuildFile; fileRef = DB5ED24B14D6A1E900637408 /* simulate.cc */; };
-		DB5ED25414D6A1E900637408 /* system.cc in Sources */ = {isa = PBXBuildFile; fileRef = DB5ED24D14D6A1E900637408 /* system.cc */; };
-		DB923C1B14D7F553000DEBC4 /* ODEintExample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB923C1A14D7F553000DEBC4 /* ODEintExample.cpp */; };
+		DB4BCFD614D97551009B2068 /* MarriageApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB5ED25514D6A1F700637408 /* MarriageApp.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +28,6 @@
 		00B784B00FF439BC000DE1D7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		00B784B10FF439BC000DE1D7 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		00B784B20FF439BC000DE1D7 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
-		00BAE6590E7ED9C10018A608 /* ParameterTesterApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ParameterTesterApp.cpp; path = ../src/ParameterTesterApp.cpp; sourceTree = SOURCE_ROOT; };
 		00CCAF14116A9FEE008396D5 /* CinderApp.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = CinderApp.icns; path = ../resources/CinderApp.icns; sourceTree = SOURCE_ROOT; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
@@ -45,18 +39,7 @@
 		53E3CDFB0E86099300238D2B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* ParameterTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParameterTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB5ED24414D6A1E900637408 /* evolve.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = evolve.cc; sourceTree = "<group>"; };
-		DB5ED24514D6A1E900637408 /* evolve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = evolve.h; sourceTree = "<group>"; };
-		DB5ED24614D6A1E900637408 /* evolve_sa.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = evolve_sa.cc; sourceTree = "<group>"; };
-		DB5ED24714D6A1E900637408 /* evolve_sa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = evolve_sa.h; sourceTree = "<group>"; };
-		DB5ED24814D6A1E900637408 /* gml.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gml.cc; sourceTree = "<group>"; };
-		DB5ED24914D6A1E900637408 /* gml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gml.h; sourceTree = "<group>"; };
-		DB5ED24A14D6A1E900637408 /* netevo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = netevo.h; sourceTree = "<group>"; };
-		DB5ED24B14D6A1E900637408 /* simulate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simulate.cc; sourceTree = "<group>"; };
-		DB5ED24C14D6A1E900637408 /* simulate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simulate.h; sourceTree = "<group>"; };
-		DB5ED24D14D6A1E900637408 /* system.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = system.cc; sourceTree = "<group>"; };
-		DB5ED24E14D6A1E900637408 /* system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = system.h; sourceTree = "<group>"; };
-		DB5ED24F14D6A1E900637408 /* visualise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = visualise.h; sourceTree = "<group>"; };
+		DB30010614D8031300A4CE38 /* VisODE.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VisODE.cpp; path = ../../ODEintCinder/VisODE.cpp; sourceTree = "<group>"; };
 		DB5ED25514D6A1F700637408 /* MarriageApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MarriageApp.cpp; sourceTree = "<group>"; };
 		DB923C1A14D7F553000DEBC4 /* ODEintExample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ODEintExample.cpp; path = ../src/ODEintExample.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,7 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				DB5ED25514D6A1F700637408 /* MarriageApp.cpp */,
-				00BAE6590E7ED9C10018A608 /* ParameterTesterApp.cpp */,
+				DB30010614D8031300A4CE38 /* VisODE.cpp */,
 				DB923C1A14D7F553000DEBC4 /* ODEintExample.cpp */,
 			);
 			name = Source;
@@ -130,7 +113,6 @@
 		29B97314FDCFA39411CA2CEA /* ParameterTester */ = {
 			isa = PBXGroup;
 			children = (
-				DB5ED24214D6A1CB00637408 /* NetEvo */,
 				29B97315FDCFA39411CA2CEA /* Headers */,
 				080E96DDFE201D6D7F000001 /* Source */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -164,25 +146,6 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		DB5ED24214D6A1CB00637408 /* NetEvo */ = {
-			isa = PBXGroup;
-			children = (
-				DB5ED24414D6A1E900637408 /* evolve.cc */,
-				DB5ED24514D6A1E900637408 /* evolve.h */,
-				DB5ED24614D6A1E900637408 /* evolve_sa.cc */,
-				DB5ED24714D6A1E900637408 /* evolve_sa.h */,
-				DB5ED24814D6A1E900637408 /* gml.cc */,
-				DB5ED24914D6A1E900637408 /* gml.h */,
-				DB5ED24A14D6A1E900637408 /* netevo.h */,
-				DB5ED24B14D6A1E900637408 /* simulate.cc */,
-				DB5ED24C14D6A1E900637408 /* simulate.h */,
-				DB5ED24D14D6A1E900637408 /* system.cc */,
-				DB5ED24E14D6A1E900637408 /* system.h */,
-				DB5ED24F14D6A1E900637408 /* visualise.h */,
-			);
-			name = NetEvo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,12 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB5ED25014D6A1E900637408 /* evolve.cc in Sources */,
-				DB5ED25114D6A1E900637408 /* evolve_sa.cc in Sources */,
-				DB5ED25214D6A1E900637408 /* gml.cc in Sources */,
-				DB5ED25314D6A1E900637408 /* simulate.cc in Sources */,
-				DB5ED25414D6A1E900637408 /* system.cc in Sources */,
-				DB923C1B14D7F553000DEBC4 /* ODEintExample.cpp in Sources */,
+				DB4BCFD614D97551009B2068 /* MarriageApp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,15 +264,15 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					/Users/sonneundasche/Development/Library/include/,
+					/Users/sonneundasche/Development/Library/include,
 					"\"$(CINDER_PATH)/boost\"",
-					/Users/sonneundasche/Development/Library/include/netevo/,
 				);
+				LIBRARY_SEARCH_PATHS = /Users/sonneundasche/Development/Library/lib/;
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
-				OTHER_LDFLAGS = "-lemon";
+				OTHER_LDFLAGS = "";
 				PREBINDING = NO;
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
-				USER_HEADER_SEARCH_PATHS = "/Users/sonneundasche/Development/Library/lib/ \"$(CINDER_PATH)/include\" ../include";
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include";
 			};
 			name = Debug;
 		};
@@ -327,15 +285,15 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					/Users/sonneundasche/Development/Library/include/,
+					/Users/sonneundasche/Development/Library/include,
 					"\"$(CINDER_PATH)/boost\"",
-					/Users/sonneundasche/Development/Library/include/netevo/,
 				);
+				LIBRARY_SEARCH_PATHS = /Users/sonneundasche/Development/Library/lib/;
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
-				OTHER_LDFLAGS = "-lemon";
+				OTHER_LDFLAGS = "";
 				PREBINDING = NO;
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
-				USER_HEADER_SEARCH_PATHS = "/Users/sonneundasche/Development/Library/lib/ \"$(CINDER_PATH)/include\" ../include";
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include";
 			};
 			name = Release;
 		};
