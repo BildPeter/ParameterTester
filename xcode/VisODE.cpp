@@ -29,13 +29,8 @@ using namespace std;
  AIM:
  
  TODO:
- - Stepsize should be variable 
- -> Do_Step implementation
- - Include ODEint with Do_Step() instead of Netevo
+ 
  - Rescale the axis
- - Difference plot
- -> New plot
- -> additional precision
  
  -------------------------------------------------------------------------------------------------------- */
 
@@ -74,7 +69,8 @@ public:
     //        dynState = State( sirSys.totalStates() );
     
     int     steps       = 1;
-    float  stepSize    = 0.0001;
+    float   stepSize    = 0.0001;
+    float   controlPrecision = 100;
     bool    runSim      = false;
     float  initS       = 300.0;
     float  initI       = 1.0;
@@ -105,6 +101,7 @@ void VisODE::setup()
     // ----- Parameter Interface -----
     mParams = params::InterfaceGl( "Parameters", Vec2i( 200, 200 ) );
     mParams.addParam( "Steps Size",         &stepSize,  "min=0.0001 step=0.0001 precision=4" );
+    mParams.addParam( "Control Precision", &controlPrecision, "min=0.0 step=1");
     mParams.addParam( "Steps per output",   &steps,     "min=0.0 step=1" );
     mParams.addParam( "beta", &beta, "min=0.0");
     mParams.addParam( "lamda", &lamda, "min=0.0");
@@ -117,13 +114,11 @@ void VisODE::setup()
 void VisODE::update()
 {
     if (runSim) {
-        for ( int i = 0; i < steps; i++){
-            integrate( sirDynamic , x , 0.0 , (double)stepSize , (double)stepSize );             // one Step
-            integrate( sirDynamic , xTest , 0.0 , (double)stepSize , ( (double)stepSize/100.0 ) );    // Hundred Steps            
+        integrate( sirDynamic , x ,     0.0 , (double)(stepSize * steps ) , (double)stepSize );             // one Step
+        integrate( sirDynamic , xTest , 0.0 , (double)(stepSize * steps ) , ( (double)stepSize/controlPrecision ) );    // Hundred Steps            
         
-            SOE.push_back( x[ 1 ] );
-            Diff.push_back( x[ 1 ] - xTest[ 1 ] );
-        }
+        SOE.push_back( x[ 1 ] );
+        Diff.push_back( x[ 1 ] - xTest[ 1 ] );
         cout << "MaxVal Error: " << *max_element( Diff.begin(), Diff.end() ) << endl;
     }
     
