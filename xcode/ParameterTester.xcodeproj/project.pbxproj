@@ -18,12 +18,7 @@
 		5323E6B60EAFCA7E003A9687 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B50EAFCA7E003A9687 /* QTKit.framework */; };
 		53E3CDFC0E86099300238D2B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53E3CDFB0E86099300238D2B /* Carbon.framework */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		DB19E5B114E2D0B100C086D6 /* MarriageApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB5ED25514D6A1F700637408 /* MarriageApp.cpp */; };
-		DB19E5C314E2D0D500C086D6 /* evolve.cc in Sources */ = {isa = PBXBuildFile; fileRef = DB19E5B714E2D0D500C086D6 /* evolve.cc */; };
-		DB19E5C414E2D0D500C086D6 /* evolve_sa.cc in Sources */ = {isa = PBXBuildFile; fileRef = DB19E5B914E2D0D500C086D6 /* evolve_sa.cc */; };
-		DB19E5C514E2D0D500C086D6 /* gml.cc in Sources */ = {isa = PBXBuildFile; fileRef = DB19E5BB14E2D0D500C086D6 /* gml.cc */; };
-		DB19E5C614E2D0D500C086D6 /* simulate.cc in Sources */ = {isa = PBXBuildFile; fileRef = DB19E5BE14E2D0D500C086D6 /* simulate.cc */; };
-		DB19E5C714E2D0D500C086D6 /* system.cc in Sources */ = {isa = PBXBuildFile; fileRef = DB19E5C014E2D0D500C086D6 /* system.cc */; };
+		DBEC388514F2C24700D6E8BD /* VisODE.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBEC388414F2C24700D6E8BD /* VisODE.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,9 +51,9 @@
 		DB19E5C014E2D0D500C086D6 /* system.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = system.cc; sourceTree = "<group>"; };
 		DB19E5C114E2D0D500C086D6 /* system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = system.h; sourceTree = "<group>"; };
 		DB19E5C214E2D0D500C086D6 /* visualise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = visualise.h; sourceTree = "<group>"; };
-		DB30010614D8031300A4CE38 /* VisODE.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VisODE.cpp; path = ../../ODEintCinder/VisODE.cpp; sourceTree = "<group>"; };
 		DB5ED25514D6A1F700637408 /* MarriageApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MarriageApp.cpp; sourceTree = "<group>"; };
 		DB923C1A14D7F553000DEBC4 /* ODEintExample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ODEintExample.cpp; path = ../src/ODEintExample.cpp; sourceTree = "<group>"; };
+		DBEC388414F2C24700D6E8BD /* VisODE.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VisODE.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				DB5ED25514D6A1F700637408 /* MarriageApp.cpp */,
-				DB30010614D8031300A4CE38 /* VisODE.cpp */,
+				DBEC388414F2C24700D6E8BD /* VisODE.cpp */,
 				DB923C1A14D7F553000DEBC4 /* ODEintExample.cpp */,
 			);
 			name = Source;
@@ -243,12 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB19E5B114E2D0B100C086D6 /* MarriageApp.cpp in Sources */,
-				DB19E5C314E2D0D500C086D6 /* evolve.cc in Sources */,
-				DB19E5C414E2D0D500C086D6 /* evolve_sa.cc in Sources */,
-				DB19E5C514E2D0D500C086D6 /* gml.cc in Sources */,
-				DB19E5C614E2D0D500C086D6 /* simulate.cc in Sources */,
-				DB19E5C714E2D0D500C086D6 /* system.cc in Sources */,
+				DBEC388514F2C24700D6E8BD /* VisODE.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
