@@ -69,7 +69,7 @@ public:
     //        dynState = State( sirSys.totalStates() );
     
     int     steps       = 1;
-    float   stepSize    = 0.0001;
+    float   stepSize    = 0.01;
     float   controlPrecision = 100;
     bool    runSim      = false;
     float  initS       = 300.0;
