@@ -7,6 +7,7 @@
 //
 
 #include <boost/numeric/odeint.hpp>
+#include <boost/lexical_cast.hpp>
 #include <algorithm>
 
 #include "cinder/app/AppBasic.h"
@@ -18,6 +19,9 @@
 #include "cinder/Vector.h"
 #include "cinder/Utilities.h"
 #include "cinder/params/Params.h"
+
+#include "peterVis.h"
+#include "VisODE.h"
 
 using namespace boost::numeric::odeint;
 
@@ -34,11 +38,10 @@ using namespace std;
  
  -------------------------------------------------------------------------------------------------------- */
 
-void drawPlot( vector< double > &inputVec, Color drawColor );
-
 typedef vector< double >    State;
-float   beta    = 20.0;
-float   lamda   = 1.0;
+float   beta    = 0.42;
+float   lamda   = 0.097;
+
 
 void sirDynamic( const State &x, State &dx, const double t ) {
     
@@ -48,7 +51,13 @@ void sirDynamic( const State &x, State &dx, const double t ) {
         dx[ 2 ] = lamda * x[ 1 ];                            // dR = lambda * I
     }
 
-
+void sisDynamic( const State &x, State &dx, const double t ) {
+    
+    double N = x[ 0 ] + x[ 1 ];
+    
+    dx[ 0 ] = ( lamda * x[ 1 ] - x[ 0 ] * x[ 1 ] * beta ) / N ; // dS = I * lamda    - S * I * beta
+    dx[ 1 ] = ( x[ 0 ] * x[ 1 ] * beta - lamda * x[ 1 ] ) / N;  // dI = S * I * beta - lambda * I
+}
 
 
 class VisODE : public AppBasic {
@@ -59,6 +68,7 @@ public:
     void toggleSim();
     void keyDown( KeyEvent event );
     void setInitialSIR( State &stateVec, double inS, double inI, double inR );
+    void setInitialSIS( State &stateVec, double inS, double inI );
     
     
     State           x;
@@ -68,8 +78,8 @@ public:
     vector< double >    Diff;
     //        dynState = State( sirSys.totalStates() );
     
-    int     steps       = 1;
-    float   stepSize    = 0.01;
+    StepCounter sc;
+    
     float   controlPrecision = 100;
     bool    runSim      = false;
     float  initS       = 300.0;
@@ -87,24 +97,32 @@ public:
 
 void VisODE::setup()
 {
-    setWindowSize( 1300, 700);
+    setWindowSize( 500, 700);
     gl::enableAlphaBlending();
     
-    x       = vector< double >(3);
-    dxdt    = vector< double >(3);
-    xTest   = vector< double >(3);
+//    x       = vector< double >(3);
+//    dxdt    = vector< double >(3);
+//    xTest   = vector< double >(3);
+//    
+//    setInitialSIR( x, initS, initI, initR );
+//    setInitialSIR( xTest, initS, initI, initR);
     
-    setInitialSIR( x, initS, initI, initR );
-    setInitialSIR( xTest, initS, initI, initR);
+    x       = vector< double >(2);
+    dxdt    = vector< double >(2);
+    xTest   = vector< double >(2);
+    
+    setInitialSIS( x, initS, initI );
+    setInitialSIS( xTest, initS, initI);
+
     
     // -----------------------------------------------
     // ----- Parameter Interface -----
     mParams = params::InterfaceGl( "Parameters", Vec2i( 200, 200 ) );
-    mParams.addParam( "Steps Size",         &stepSize,  "min=0.0001 step=0.0001 precision=4" );
+    mParams.addParam( "Steps Size",         &sc.stepSize,  "min=0.0001 step=0.0001 precision=4" );
     mParams.addParam( "Control Precision", &controlPrecision, "min=0.0 step=1");
-    mParams.addParam( "Steps per output",   &steps,     "min=0.0 step=1" );
-    mParams.addParam( "beta", &beta, "min=0.0");
-    mParams.addParam( "lamda", &lamda, "min=0.0");
+    mParams.addParam( "Steps per Run",   &sc.stepsPerRun,     "min=0.0 step=1" );
+    mParams.addParam( "beta", &beta, "min=0.0 step=0.01");
+    mParams.addParam( "alpha", &lamda, "min=0.0 step=0.001");
     mParams.addParam( "Initial S", &initS, "min=0.0");
     mParams.addParam( "Initial I", &initI, "min=0.0");
     mParams.addParam( "Initial R", &initR, "min=0.0");
@@ -114,8 +132,13 @@ void VisODE::setup()
 void VisODE::update()
 {
     if (runSim) {
-        integrate( sirDynamic , x ,     0.0 , (double)(stepSize * steps ) , (double)stepSize );             // one Step
-        integrate( sirDynamic , xTest , 0.0 , (double)(stepSize * steps ) , ( (double)stepSize/controlPrecision ) );    // Hundred Steps            
+//        integrate( sirDynamic , x ,     0.0 , (double)(sc.stepSize * sc.steps ) , (double)sc.stepSize );             // one Step
+//        integrate( sirDynamic , xTest , 0.0 , (double)(sc.stepSize * sc.steps ) , ( (double)sc.stepSize/controlPrecision ) );    // Hundred Steps
+
+        integrate( sisDynamic , x ,     0.0 , (double)(sc.stepSize * sc.stepsPerRun ) , (double)sc.stepSize );             // one Step
+        integrate( sisDynamic , xTest , 0.0 , (double)(sc.stepSize * sc.stepsPerRun ) , ( (double)sc.stepSize/controlPrecision ) );    // Hundred Steps
+        
+        sc.runDone();   // calculetes the values for time&run counting
         
         SOE.push_back( x[ 1 ] );
         Diff.push_back( x[ 1 ] - xTest[ 1 ] );
@@ -128,9 +151,18 @@ void VisODE::draw()
 {
 	gl::clear( backgroundColor ); 
     
+    string stepsTxt = "Passed Steps: ";
+    string timeTxt = "Passed Virtual Time: ";
+    stepsTxt += boost::lexical_cast<string>( sc.passedSteps );
+    timeTxt += boost::lexical_cast<string>( sc.passedTime );
+    
     // ----- Plot: Size of Epidemic -----
-    drawPlot( SOE,  Color( 0, 1, 0 ) );
-    drawPlot( Diff, Color( 1, 0, 0 ) );
+    drawPlot( SOE, Vec2i( 50, 400 ), 1.0, "SOE");
+    drawPlot( Diff, Vec2i( 50, 600 ), 1.0, "Numerical precision difference");
+    
+    gl::drawString( "SIS Model Parameter Tester", Vec2i( getWindowWidth() / 2 + 50, 50 ), Color(0, 0, 0) );
+    gl::drawString( stepsTxt, Vec2i( getWindowWidth() / 2 + 50, 95 ), Color(0, 0, 0) );
+    gl::drawString( timeTxt, Vec2i( getWindowWidth() / 2 + 50, 110 ), Color(0, 0, 0) );
     
     params::InterfaceGl::draw();
 }
@@ -145,13 +177,15 @@ void VisODE::keyDown( KeyEvent event )
         case 'r':
             SOE.clear();
             Diff.clear();
-            setInitialSIR( x, initS, initI, initR );
-            setInitialSIR( xTest, initS, initI, initR );
+            setInitialSIS( x, initS, initI );
+            setInitialSIS( xTest, initS, initI );
+            sc.resetCounter();
             break;
         default:
             break;
     }
 }
+
 
 void VisODE::toggleSim()
 {
@@ -169,42 +203,12 @@ void VisODE::setInitialSIR( State &stateVec, double inS, double inI, double inR 
     stateVec[ 2 ] = inR;
 }
 
-
-CINDER_APP_BASIC( VisODE, RendererGl )
-
-
-void drawPlot( vector< double > &inputVec, Color drawColor ){
-    int     timeLine = 0;
-    float headLength = 6.0f;
-    float headRadius = 3.0f;
-    Vec2f   coordinate;
-    
-    glLineWidth( 1 );
-    gl::color( Color( 0,0,0 ) );
-    
-    gl::pushMatrices();
-    gl::translate( Vec2f( 50, 650 ) );
-    gl::rotate( Vec3f( 180, 0, 0) );
-    
-    gl::drawVector( Vec3f( 0, 0, 0 ) , Vec3f( 1200, 0, 0 ),  headLength , headRadius );     // X-Axis
-    gl::drawVector( Vec3f( 0, 0, 0 ) , Vec3f( 0, 300, 0 ), headLength , headRadius );       // Y-Axis
-    
-    glLineWidth( 2 );
-    gl::color( drawColor );
-    gl::scale( Vec3f( 1, 0.1, 1 ) );
-    glBegin(GL_LINE_STRIP);    
-    for (vector< double >::iterator iter = inputVec.begin(); iter != inputVec.end(); iter++){
-        coordinate = Vec2f( timeLine, *iter );
-        //        cout << "Output: " << *iter << endl;
-        gl::vertex( coordinate );
-        timeLine++;
-    }
-    glEnd();
-    gl::popMatrices();
+void VisODE::setInitialSIS( State &stateVec, double inS, double inI )
+{
+    stateVec[ 0 ] = inS;
+    stateVec[ 1 ] = inI;
 }
 
 
 
-
-
-
+CINDER_APP_BASIC( VisODE, RendererGl )
