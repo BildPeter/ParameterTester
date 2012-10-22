@@ -18,6 +18,11 @@
 		5323E6B60EAFCA7E003A9687 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B50EAFCA7E003A9687 /* QTKit.framework */; };
 		53E3CDFC0E86099300238D2B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53E3CDFB0E86099300238D2B /* Carbon.framework */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		DB3F17111635E1AE00ECB00B /* evolve_sa.cc in Sources */ = {isa = PBXBuildFile; fileRef = DB3F17051635E1AE00ECB00B /* evolve_sa.cc */; };
+		DB3F17121635E1AE00ECB00B /* evolve.cc in Sources */ = {isa = PBXBuildFile; fileRef = DB3F17071635E1AE00ECB00B /* evolve.cc */; };
+		DB3F17131635E1AE00ECB00B /* gml.cc in Sources */ = {isa = PBXBuildFile; fileRef = DB3F17091635E1AE00ECB00B /* gml.cc */; };
+		DB3F17141635E1AE00ECB00B /* simulate.cc in Sources */ = {isa = PBXBuildFile; fileRef = DB3F170C1635E1AE00ECB00B /* simulate.cc */; };
+		DB3F17151635E1AE00ECB00B /* system.cc in Sources */ = {isa = PBXBuildFile; fileRef = DB3F170E1635E1AE00ECB00B /* system.cc */; };
 		DB47498F1631B66400F2EF1F /* Orange-Monster.icns in Resources */ = {isa = PBXBuildFile; fileRef = DB47498E1631B66400F2EF1F /* Orange-Monster.icns */; };
 		DBEC388514F2C24700D6E8BD /* VisODE.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBEC388414F2C24700D6E8BD /* VisODE.cpp */; };
 /* End PBXBuildFile section */
@@ -40,24 +45,24 @@
 		53E3CDFB0E86099300238D2B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* ParameterTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParameterTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB19E5B714E2D0D500C086D6 /* evolve.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = evolve.cc; sourceTree = "<group>"; };
-		DB19E5B814E2D0D500C086D6 /* evolve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = evolve.h; sourceTree = "<group>"; };
-		DB19E5B914E2D0D500C086D6 /* evolve_sa.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = evolve_sa.cc; sourceTree = "<group>"; };
-		DB19E5BA14E2D0D500C086D6 /* evolve_sa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = evolve_sa.h; sourceTree = "<group>"; };
-		DB19E5BB14E2D0D500C086D6 /* gml.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gml.cc; sourceTree = "<group>"; };
-		DB19E5BC14E2D0D500C086D6 /* gml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gml.h; sourceTree = "<group>"; };
-		DB19E5BD14E2D0D500C086D6 /* netevo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = netevo.h; sourceTree = "<group>"; };
-		DB19E5BE14E2D0D500C086D6 /* simulate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simulate.cc; sourceTree = "<group>"; };
-		DB19E5BF14E2D0D500C086D6 /* simulate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simulate.h; sourceTree = "<group>"; };
-		DB19E5C014E2D0D500C086D6 /* system.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = system.cc; sourceTree = "<group>"; };
-		DB19E5C114E2D0D500C086D6 /* system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = system.h; sourceTree = "<group>"; };
-		DB19E5C214E2D0D500C086D6 /* visualise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = visualise.h; sourceTree = "<group>"; };
 		DB27E96916358E4E007BBF8C /* Calculations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calculations.h; sourceTree = "<group>"; };
 		DB27E96A16358E4E007BBF8C /* PeterDynamics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeterDynamics.h; sourceTree = "<group>"; };
 		DB27E96B16358E4E007BBF8C /* peterExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = peterExtension.h; sourceTree = "<group>"; };
 		DB27E96C16358E4E007BBF8C /* peterVis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = peterVis.h; sourceTree = "<group>"; };
 		DB27E96D16358E4E007BBF8C /* stepCounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stepCounter.h; sourceTree = "<group>"; };
 		DB27E96E16358E4E007BBF8C /* vis_vbo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vis_vbo.h; sourceTree = "<group>"; };
+		DB3F17051635E1AE00ECB00B /* evolve_sa.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = evolve_sa.cc; path = ../../../../Development/Library/include/netevo/evolve_sa.cc; sourceTree = "<group>"; };
+		DB3F17061635E1AE00ECB00B /* evolve_sa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = evolve_sa.h; path = ../../../../Development/Library/include/netevo/evolve_sa.h; sourceTree = "<group>"; };
+		DB3F17071635E1AE00ECB00B /* evolve.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = evolve.cc; path = ../../../../Development/Library/include/netevo/evolve.cc; sourceTree = "<group>"; };
+		DB3F17081635E1AE00ECB00B /* evolve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = evolve.h; path = ../../../../Development/Library/include/netevo/evolve.h; sourceTree = "<group>"; };
+		DB3F17091635E1AE00ECB00B /* gml.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gml.cc; path = ../../../../Development/Library/include/netevo/gml.cc; sourceTree = "<group>"; };
+		DB3F170A1635E1AE00ECB00B /* gml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gml.h; path = ../../../../Development/Library/include/netevo/gml.h; sourceTree = "<group>"; };
+		DB3F170B1635E1AE00ECB00B /* netevo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = netevo.h; path = ../../../../Development/Library/include/netevo/netevo.h; sourceTree = "<group>"; };
+		DB3F170C1635E1AE00ECB00B /* simulate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = simulate.cc; path = ../../../../Development/Library/include/netevo/simulate.cc; sourceTree = "<group>"; };
+		DB3F170D1635E1AE00ECB00B /* simulate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = simulate.h; path = ../../../../Development/Library/include/netevo/simulate.h; sourceTree = "<group>"; };
+		DB3F170E1635E1AE00ECB00B /* system.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = system.cc; path = ../../../../Development/Library/include/netevo/system.cc; sourceTree = "<group>"; };
+		DB3F170F1635E1AE00ECB00B /* system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = system.h; path = ../../../../Development/Library/include/netevo/system.h; sourceTree = "<group>"; };
+		DB3F17101635E1AE00ECB00B /* visualise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = visualise.h; path = ../../../../Development/Library/include/netevo/visualise.h; sourceTree = "<group>"; };
 		DB47498E1631B66400F2EF1F /* Orange-Monster.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Orange-Monster.icns"; sourceTree = "<group>"; };
 		DBEC388414F2C24700D6E8BD /* VisODE.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VisODE.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -170,18 +175,18 @@
 		DB19E5B214E2D0C500C086D6 /* NetEvo */ = {
 			isa = PBXGroup;
 			children = (
-				DB19E5B714E2D0D500C086D6 /* evolve.cc */,
-				DB19E5B814E2D0D500C086D6 /* evolve.h */,
-				DB19E5B914E2D0D500C086D6 /* evolve_sa.cc */,
-				DB19E5BA14E2D0D500C086D6 /* evolve_sa.h */,
-				DB19E5BB14E2D0D500C086D6 /* gml.cc */,
-				DB19E5BC14E2D0D500C086D6 /* gml.h */,
-				DB19E5BD14E2D0D500C086D6 /* netevo.h */,
-				DB19E5BE14E2D0D500C086D6 /* simulate.cc */,
-				DB19E5BF14E2D0D500C086D6 /* simulate.h */,
-				DB19E5C014E2D0D500C086D6 /* system.cc */,
-				DB19E5C114E2D0D500C086D6 /* system.h */,
-				DB19E5C214E2D0D500C086D6 /* visualise.h */,
+				DB3F17051635E1AE00ECB00B /* evolve_sa.cc */,
+				DB3F17061635E1AE00ECB00B /* evolve_sa.h */,
+				DB3F17071635E1AE00ECB00B /* evolve.cc */,
+				DB3F17081635E1AE00ECB00B /* evolve.h */,
+				DB3F17091635E1AE00ECB00B /* gml.cc */,
+				DB3F170A1635E1AE00ECB00B /* gml.h */,
+				DB3F170B1635E1AE00ECB00B /* netevo.h */,
+				DB3F170C1635E1AE00ECB00B /* simulate.cc */,
+				DB3F170D1635E1AE00ECB00B /* simulate.h */,
+				DB3F170E1635E1AE00ECB00B /* system.cc */,
+				DB3F170F1635E1AE00ECB00B /* system.h */,
+				DB3F17101635E1AE00ECB00B /* visualise.h */,
 			);
 			name = NetEvo;
 			sourceTree = "<group>";
@@ -260,6 +265,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBEC388514F2C24700D6E8BD /* VisODE.cpp in Sources */,
+				DB3F17111635E1AE00ECB00B /* evolve_sa.cc in Sources */,
+				DB3F17121635E1AE00ECB00B /* evolve.cc in Sources */,
+				DB3F17131635E1AE00ECB00B /* gml.cc in Sources */,
+				DB3F17141635E1AE00ECB00B /* simulate.cc in Sources */,
+				DB3F17151635E1AE00ECB00B /* system.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
