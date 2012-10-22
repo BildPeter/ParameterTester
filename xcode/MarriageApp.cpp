@@ -10,11 +10,7 @@
 
 #include <netevo/netevo.h>
 
-//#include <numeric/odeint/stepper/runge_kutta4.hpp>
-//#include "peter/PeterDynamics.h"
-
 using namespace netevo;
-//using namespace boost::numeric;
 
 using namespace ci;
 using namespace ci::app;

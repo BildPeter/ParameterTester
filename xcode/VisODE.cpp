@@ -20,8 +20,9 @@
 #include "cinder/Utilities.h"
 #include "cinder/params/Params.h"
 
+//#include "peterExtension.h"
+#include "stepCounter.h"
 #include "peterVis.h"
-#include "VisODE.h"
 
 using namespace boost::numeric::odeint;
 

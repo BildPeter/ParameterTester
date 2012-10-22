@@ -52,8 +52,12 @@
 		DB19E5C014E2D0D500C086D6 /* system.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = system.cc; sourceTree = "<group>"; };
 		DB19E5C114E2D0D500C086D6 /* system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = system.h; sourceTree = "<group>"; };
 		DB19E5C214E2D0D500C086D6 /* visualise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = visualise.h; sourceTree = "<group>"; };
-		DB47498A16319F5C00F2EF1F /* peterVis.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = peterVis.h; sourceTree = "<group>"; };
-		DB47498D1631ADE700F2EF1F /* VisODE.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VisODE.h; sourceTree = "<group>"; };
+		DB27E96916358E4E007BBF8C /* Calculations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calculations.h; sourceTree = "<group>"; };
+		DB27E96A16358E4E007BBF8C /* PeterDynamics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeterDynamics.h; sourceTree = "<group>"; };
+		DB27E96B16358E4E007BBF8C /* peterExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = peterExtension.h; sourceTree = "<group>"; };
+		DB27E96C16358E4E007BBF8C /* peterVis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = peterVis.h; sourceTree = "<group>"; };
+		DB27E96D16358E4E007BBF8C /* stepCounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stepCounter.h; sourceTree = "<group>"; };
+		DB27E96E16358E4E007BBF8C /* vis_vbo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vis_vbo.h; sourceTree = "<group>"; };
 		DB47498E1631B66400F2EF1F /* Orange-Monster.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Orange-Monster.icns"; sourceTree = "<group>"; };
 		DB5ED25514D6A1F700637408 /* MarriageApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MarriageApp.cpp; sourceTree = "<group>"; };
 		DB923C1A14D7F553000DEBC4 /* ODEintExample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ODEintExample.cpp; path = ../src/ODEintExample.cpp; sourceTree = "<group>"; };
@@ -86,7 +90,6 @@
 			children = (
 				DB5ED25514D6A1F700637408 /* MarriageApp.cpp */,
 				DBEC388414F2C24700D6E8BD /* VisODE.cpp */,
-				DB47498D1631ADE700F2EF1F /* VisODE.h */,
 				DB923C1A14D7F553000DEBC4 /* ODEintExample.cpp */,
 			);
 			name = Source;
@@ -130,6 +133,7 @@
 		29B97314FDCFA39411CA2CEA /* ParameterTester */ = {
 			isa = PBXGroup;
 			children = (
+				DB27E96816358E4E007BBF8C /* peter */,
 				DB19E5B214E2D0C500C086D6 /* NetEvo */,
 				29B97315FDCFA39411CA2CEA /* Headers */,
 				080E96DDFE201D6D7F000001 /* Source */,
@@ -143,7 +147,6 @@
 		29B97315FDCFA39411CA2CEA /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				DB47498A16319F5C00F2EF1F /* peterVis.h */,
 				32CA4F630368D1EE00C91783 /* ParameterTester_Prefix.pch */,
 			);
 			name = Headers;
@@ -185,6 +188,20 @@
 				DB19E5C214E2D0D500C086D6 /* visualise.h */,
 			);
 			name = NetEvo;
+			sourceTree = "<group>";
+		};
+		DB27E96816358E4E007BBF8C /* peter */ = {
+			isa = PBXGroup;
+			children = (
+				DB27E96916358E4E007BBF8C /* Calculations.h */,
+				DB27E96A16358E4E007BBF8C /* PeterDynamics.h */,
+				DB27E96B16358E4E007BBF8C /* peterExtension.h */,
+				DB27E96C16358E4E007BBF8C /* peterVis.h */,
+				DB27E96D16358E4E007BBF8C /* stepCounter.h */,
+				DB27E96E16358E4E007BBF8C /* vis_vbo.h */,
+			);
+			name = peter;
+			path = ../../../../Development/Library/include/peter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
