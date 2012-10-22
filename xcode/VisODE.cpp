@@ -6,10 +6,14 @@
 //  Copyright (c) 2012 BildPeter Visuals. All rights reserved.
 //
 
+// --- Boost (has to be before Cinder)
 #include <boost/numeric/odeint.hpp>
 #include <boost/lexical_cast.hpp>
+
+// --- C++
 #include <algorithm>
 
+// --- Cinder
 #include "cinder/app/AppBasic.h"
 #include "cinder/gl/gl.h"
 #include "cinder/ImageIO.h"
@@ -20,7 +24,7 @@
 #include "cinder/Utilities.h"
 #include "cinder/params/Params.h"
 
-//#include "peterExtension.h"
+// --- Peter Extension
 #include "stepCounter.h"
 #include "peterVis.h"
 
