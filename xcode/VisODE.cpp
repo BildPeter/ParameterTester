@@ -2,8 +2,8 @@
 //  VisODE.cpp
 //  ParameterTester
 //
-//  Created by BildPeter Visuals on 31.01.12.
-//  Copyright (c) 2012 BildPeter Visuals. All rights reserved.
+//  Created by Peter A. Kolski on 31.01.12.
+//  Copyright (c) 2012 Peter A. Kolski. All rights reserved.
 //
 
 // --- Boost (has to be before Cinder)
